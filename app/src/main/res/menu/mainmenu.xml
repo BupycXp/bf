@@ -1,0 +1,102 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+    <group
+        android:id="@+id/character">
+        <item
+            android:id="@+id/character_overview"
+            android:orderInCategory="1"
+            android:title="@string/menu_character_overview"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/character_cache"
+            android:orderInCategory="1"
+            android:title="@string/menu_character_cache"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/character_tribe"
+            android:orderInCategory="1"
+            android:title="@string/menu_character_tribe"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/character_set"
+            android:orderInCategory="1"
+            android:title="@string/menu_character_set"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/character_posts"
+            android:orderInCategory="1"
+            android:title="@string/menu_character_posts"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/character_contacts"
+            android:orderInCategory="1"
+            android:title="@string/menu_character_contacts"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/character_top_list"
+            android:orderInCategory="1"
+            android:title="@string/menu_character_top_list"
+            app:showAsAction="never" />
+
+    </group>
+    <group
+        android:id="@+id/hunt">
+        <item
+            android:id="@+id/hunt_daemons"
+            android:orderInCategory="1"
+            android:title="@string/menu_hunt_daemons"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/hunt_vampires"
+            android:orderInCategory="1"
+            android:title="@string/menu_hunt_vampires"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/hunt_fellows"
+            android:orderInCategory="1"
+            android:title="@string/menu_hunt_fellows"
+            app:showAsAction="never" />
+
+    </group>
+    <group
+        android:id="@+id/city">
+        <item
+            android:id="@+id/city_overview"
+            android:orderInCategory="1"
+            android:title="@string/menu_city_overview"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/city_merchant"
+            android:orderInCategory="1"
+            android:title="@string/menu_city_merchant"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/city_city_cemetery"
+            android:orderInCategory="1"
+            android:title="@string/menu_city_cemetery"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/city_city_tavern"
+            android:orderInCategory="1"
+            android:title="@string/menu_city_tavern"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/city_city_market"
+            android:orderInCategory="1"
+            android:title="@string/menu_city_market"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/city_city_library"
+            android:orderInCategory="1"
+            android:title="@string/menu_city_library"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/city_city_temple"
+            android:orderInCategory="1"
+            android:title="@string/menu_city_temple"
+            app:showAsAction="never" />
+     </group>
+</menu>
+

@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">My Application</string>
+
+    <string name="menu_character_overview">Обзор</string>
+    <string name="menu_character_cache">Тайник</string>
+    <string name="menu_character_tribe">Клан</string>
+    <string name="menu_character_set">Набор</string>
+    <string name="menu_character_posts">Сообщения</string>
+    <string name="menu_character_contacts">Контакты</string>
+    <string name="menu_character_top_list">ТОП-лист</string>
+
+    <string name="menu_hunt_daemons">Охота на демонов</string>
+    <string name="menu_hunt_vampires">Охота на вампиров</string>
+    <string name="menu_hunt_fellows">Охота на людишек</string>
+
+    <string name="menu_city_overview">Обзор города</string>
+    <string name="menu_city_merchant">Торговец</string>
+    <string name="menu_city_cemetery">Кладбище</string>
+    <string name="menu_city_tavern">Таверна</string>
+    <string name="menu_city_market">Рынок</string>
+    <string name="menu_city_library">Библиотека</string>
+    <string name="menu_city_temple">Храм</string>
+
+    <string name="button_connect">Подключить</string>
+
+    <string name="text_login">Логин</string>
+    <string name="text_pass">Пароль</string>
+
+
+    <string name="Text1">Кнопка 1</string>
+    <string name="Text2">Нажата кнопка 2</string>
+    <string name="Text3">Нажата кнопка 3</string>
+    <string name="CheckBox1">Отобразить группу меню</string>
+    <string name="CheckBox2">Отобразить пункт меню</string>
+    <string name="URL">http://s102.ru.bitefight.gameforge.com/user/login</string>
+
+
+</resources>
