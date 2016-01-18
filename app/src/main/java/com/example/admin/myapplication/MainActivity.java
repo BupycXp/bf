@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
 
         button_connect = (Button) findViewById(R.id.button_connect);
 
-        memo = (ExtractEditText) findViewById(R.id.memo);
 
 
         View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -147,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         protected void onPostExecute(String result) {
+
             toast.show();
         }
 
