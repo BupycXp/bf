@@ -76,12 +76,12 @@ public class HttpRequest extends AsyncTask<String, Void, String> {
 
         protected void onPostExecute(String result) {
 
-            try {
+/**            try {
                 FileWriter writer = new FileWriter("test.txt");
                 writer.write(responseStr);
             } catch (IOException e) {
                 e.printStackTrace();
-            }
+            }**/
         }
 
     }

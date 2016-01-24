@@ -1,5 +1,6 @@
 package com.example.admin.myapplication;
 
+import android.content.Intent;
 import android.inputmethodservice.ExtractEditText;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -42,12 +43,18 @@ public class MainActivity extends AppCompatActivity {
     Toast toast;
     HttpRequest MHR;
     String HttpResult;
+
+
     // Логирование
     private static final String Tag = "myLogs";
+
+
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
+
+
     private GoogleApiClient client2;
 
     @Override
@@ -71,12 +78,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.button_connect:
-                        toast = Toast.makeText(MainActivity.this, "Авторизация прошла успешно!", Toast.LENGTH_SHORT);
-                        toast.setGravity(Gravity.CENTER, 0, 0);
                         //toast.show();
                         MHR = new HttpRequest();
                         MHR.execute(getString(R.string.URL_login));
                         HttpResult = MHR.responseStr;
+                        if (HttpResult.toString() != ""){
+                            Intent char_intent = new Intent(MainActivity.this, CharActivity.class);
+                            startActivity(char_intent);
+                        }
+
+//                        toast = Toast.makeText(MainActivity.this, "Авторизация прошла успешно!", Toast.LENGTH_SHORT);
+//                        toast.setGravity(Gravity.CENTER, 0, 0);
                         break;
                 }
             }

@@ -3,7 +3,7 @@ package com.example.admin.myapplication;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class CharActivity extends AppCompatActivity {
+public class CharActivity extends MainActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
