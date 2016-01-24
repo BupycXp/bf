@@ -32,7 +32,7 @@
     <string name="Text3">Нажата кнопка 3</string>
     <string name="CheckBox1">Отобразить группу меню</string>
     <string name="CheckBox2">Отобразить пункт меню</string>
-    <string name="URL">http://s102.ru.bitefight.gameforge.com/user/login</string>
+    <string name="URL_login">http://s102.ru.bitefight.gameforge.com/user/login</string>
 
 
 </resources>

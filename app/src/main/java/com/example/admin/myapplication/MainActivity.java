@@ -28,6 +28,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -39,10 +40,8 @@ public class MainActivity extends AppCompatActivity {
     Button button_connect;
     ImageView imageView;
     Toast toast;
-    MyHttpResponse MHR;
-    String responseStr;
-    ExtractEditText memo;
-
+    HttpRequest MHR;
+    String HttpResult;
     // Логирование
     private static final String Tag = "myLogs";
     /**
@@ -72,11 +71,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.button_connect:
-                        toast = Toast.makeText(MainActivity.this, "АВТОРИЗАЦИЯ ПРОШЛА УСПЕШНО!", Toast.LENGTH_SHORT);
+                        toast = Toast.makeText(MainActivity.this, "Авторизация прошла успешно!", Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         //toast.show();
-                        MHR = new MyHttpResponse();
-                        MHR.execute();
+                        MHR = new HttpRequest();
+                        MHR.execute(getString(R.string.URL_login));
+                        HttpResult = MHR.responseStr;
                         break;
                 }
             }
@@ -85,114 +85,6 @@ public class MainActivity extends AppCompatActivity {
         client2 = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
-    class MyHttpResponse extends AsyncTask<Void, Void, String> {
-
-        private Exception exception;
-
-        protected String doInBackground(Void... params) {
-            try {
-                //noinspection deprecation
-                HttpClient client = new DefaultHttpClient();
-
-                HttpPost post = new HttpPost(getString(R.string.URL));
-                Log.d(Tag, "Запрос начат: " + getString(R.string.URL));
-
-                List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(2);
-                nameValuePair.add(new BasicNameValuePair("user", "BupycXp"));
-                nameValuePair.add(new BasicNameValuePair("pass", "321ewq#@!"));
-                post.setEntity(new UrlEncodedFormEntity(nameValuePair,"UTF-8"));
-                Log.d(Tag, "Параметры добавлены");
-                Log.d(Tag, nameValuePair.toString());
-
-                try {
-                    post.setEntity(new UrlEncodedFormEntity(nameValuePair));
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                    Log.d(Tag, e.toString());
-                }
-
-                try {
-                    HttpResponse response = client.execute(post);
-                    Log.d(Tag, response.toString());
-
-                    responseStr = response.getEntity().toString();
-                    Log.d(Tag, responseStr);
-
-                    responseStr = EntityUtils.toString(response.getEntity());
-                    //noinspection deprecation
-                    response.getEntity().consumeContent();
-                    return responseStr;
-
-                } catch (ClientProtocolException e) {
-                    e.printStackTrace();
-                    Log.d(Tag, e.toString());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    Log.d(Tag, e.toString());
-                    return null;
-
-                } catch (Exception e) {
-                    this.exception = e;
-                    Log.d(Tag, e.toString());
-                    return null;
-                }
-            } catch (Exception e) {
-                this.exception = e;
-                Log.d(Tag, e.toString());
-                return null;
-            }
-            return responseStr;
-        }
-
-
-        protected void onPostExecute(String result) {
-
-            toast.show();
-        }
-
-    }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        return super.onPrepareOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.mainmenu, menu);
-        menu.add(2, 5, 105, "пункт5").setCheckable(true);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        int id = item.getItemId();
-
-        switch (id) {
-            case R.id.character_overview:
-//                imageView.setVisibility(View.INVISIBLE);
-                break;
-            case R.id.character_cache:
-                toast = Toast.makeText(MainActivity.this, "Выбран пункт меню " + getString(R.string.menu_character_cache), Toast.LENGTH_SHORT);
-                toast.show();
-                break;
-            case R.id.character_tribe:
-                toast = Toast.makeText(MainActivity.this, "Выбран пункт меню " + getString(R.string.menu_character_tribe), Toast.LENGTH_SHORT);
-                toast.show();
-                break;
-            case R.id.character_set:
-                toast = Toast.makeText(MainActivity.this, "Выбран пункт меню " + getString(R.string.menu_character_set), Toast.LENGTH_SHORT);
-                toast.show();
-                break;
-            case 5:
-                item.setChecked(!item.isChecked());
-                break;
-
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     public void onStart() {
