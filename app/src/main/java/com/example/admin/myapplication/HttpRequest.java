@@ -1,8 +1,6 @@
 package com.example.admin.myapplication;
 
 import android.os.AsyncTask;
-import android.util.Log;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -13,7 +11,6 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -25,7 +22,7 @@ import java.util.List;
 public class HttpRequest extends AsyncTask<String, Void, String> {
 
     private static final String Tag = "myLogs";
-    String responseStr;
+    public static String responseStr;
 
 
         private Exception exception;
@@ -39,7 +36,7 @@ public class HttpRequest extends AsyncTask<String, Void, String> {
 
                 List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(2);
                 nameValuePair.add(new BasicNameValuePair("user", "BupycXp"));
-                nameValuePair.add(new BasicNameValuePair("pass", "321ewq#@!"));
+                nameValuePair.add(new BasicNameValuePair("pass", "123qwe"));
                 post.setEntity(new UrlEncodedFormEntity(nameValuePair, "UTF-8"));
 
                 try {
@@ -52,7 +49,6 @@ public class HttpRequest extends AsyncTask<String, Void, String> {
                     HttpResponse response = client.execute(post);
                     responseStr = response.getEntity().toString();
                     responseStr = EntityUtils.toString(response.getEntity());
-                    //noinspection deprecation
                     response.getEntity().consumeContent();
                     return responseStr;
 
@@ -76,6 +72,7 @@ public class HttpRequest extends AsyncTask<String, Void, String> {
 
         protected void onPostExecute(String result) {
 
+            //st.execute(HttpCharResult);
 /**            try {
                 FileWriter writer = new FileWriter("test.txt");
                 writer.write(responseStr);

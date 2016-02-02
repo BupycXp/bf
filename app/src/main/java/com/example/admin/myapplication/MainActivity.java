@@ -1,15 +1,11 @@
 package com.example.admin.myapplication;
 
 import android.content.Intent;
-import android.inputmethodservice.ExtractEditText;
 import android.net.Uri;
-import android.os.AsyncTask;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,30 +15,14 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
-
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
 
     Button button_connect;
     ImageView imageView;
-    Toast toast;
     HttpRequest MHR;
-    String HttpResult;
+   public static String HttpResult;
 
 
     // Логирование
@@ -75,16 +55,18 @@ public class MainActivity extends AppCompatActivity {
 
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+                public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.button_connect:
-                        //toast.show();
                         MHR = new HttpRequest();
                         MHR.execute(getString(R.string.URL_login));
                         HttpResult = MHR.responseStr;
-                        if (HttpResult.toString() != ""){
+                        try {
+                            Thread.sleep(2000);
                             Intent char_intent = new Intent(MainActivity.this, CharActivity.class);
                             startActivity(char_intent);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
                         }
 
 //                        toast = Toast.makeText(MainActivity.this, "Авторизация прошла успешно!", Toast.LENGTH_SHORT);
@@ -96,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
         button_connect.setOnClickListener(onClickListener);
         client2 = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
+
 
 
     @Override
@@ -121,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStop() {
         super.onStop();
-
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         Action viewAction = Action.newAction(
@@ -137,7 +119,5 @@ public class MainActivity extends AppCompatActivity {
         AppIndex.AppIndexApi.end(client2, viewAction);
         client2.disconnect();
     }
-
-
 
 };
