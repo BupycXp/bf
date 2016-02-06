@@ -33,6 +33,12 @@
     <string name="CheckBox1">Отобразить группу меню</string>
     <string name="CheckBox2">Отобразить пункт меню</string>
     <string name="URL_login">http://s102.en.bitefight.gameforge.com/user/login</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 
 
 </resources>

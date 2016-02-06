@@ -16,13 +16,12 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 
-
 public class MainActivity extends AppCompatActivity {
 
     Button button_connect;
     ImageView imageView;
     HttpRequest MHR;
-   public static String HttpResult;
+    public static String HttpResult;
 
 
     // Логирование
@@ -52,10 +51,9 @@ public class MainActivity extends AppCompatActivity {
         button_connect = (Button) findViewById(R.id.button_connect);
 
 
-
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
-                public void onClick(View v) {
+            public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.button_connect:
                         MHR = new HttpRequest();
@@ -63,8 +61,13 @@ public class MainActivity extends AppCompatActivity {
                         HttpResult = MHR.responseStr;
                         try {
                             Thread.sleep(2000);
-                            Intent char_intent = new Intent(MainActivity.this, CharActivity.class);
-                            startActivity(char_intent);
+                            if (HttpResult != null) {
+                                Intent char_intent = new Intent(MainActivity.this, CharActivity.class);
+                                startActivity(char_intent);
+                            } else {
+                                Toast toast = Toast.makeText(MainActivity.this, "Not connection!", Toast.LENGTH_SHORT);
+                                toast.show();
+                            }
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -78,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
         button_connect.setOnClickListener(onClickListener);
         client2 = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
-
 
 
     @Override
